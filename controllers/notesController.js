@@ -1,5 +1,5 @@
-const Note = require("../models/Note.model");
-const User = require("../models/User.model");
+const  Note = require("../models/note");
+const  User  = require("../models/user");
 const asyncHandler = require("express-async-handler");
 
 const getAllNotes = asyncHandler(async (req, res) => {
