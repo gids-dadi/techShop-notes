@@ -11,8 +11,6 @@ const connectDB = require("./config/dbConnect.js");
 const mongoose = require("mongoose");
 const PORT = process.env.PORT || 3550;
 
-console.log(process.env.GIDIZ);
-
 connectDB();
 
 app.use(logger);
