@@ -1,4 +1,4 @@
-const rateLimit = require("express-rste-limit");
+const rateLimit = require("express-rate-limit");
 const { logEvents } = require("./logger");
 
 const loginLimiter = rateLimit({
