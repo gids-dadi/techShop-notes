@@ -1,5 +1,5 @@
-const  Note = require("../models/note");
-const  User  = require("../models/user");
+const Note = require("../models/note");
+const User = require("../models/user");
 const asyncHandler = require("express-async-handler");
 
 const getAllNotes = asyncHandler(async (req, res) => {
@@ -21,8 +21,8 @@ const getAllNotes = asyncHandler(async (req, res) => {
   res.json(notesWithUser);
 });
 
-const createNewNotes = asyncHandler(async (req, res) => {
-  // Create new note
+const createNewNote = asyncHandler(async (req, res) => {
+  // destructure the body content
   const { user, title, text } = req.body;
 
   // confirm Data
@@ -37,7 +37,7 @@ const createNewNotes = asyncHandler(async (req, res) => {
     return res.status(409).json({ message: "Duplicate note title" });
   }
 
-  // Create and the user
+  // Create and store the user
   const note = await Note.create({ user, title, text });
 
   if (note) {
@@ -106,7 +106,7 @@ const deleteNote = asyncHandler(async (req, res) => {
 
 module.exports = {
   getAllNotes,
-  createNewNotes,
+  createNewNote,
   updateNote,
   deleteNote,
 };
