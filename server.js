@@ -11,8 +11,6 @@ const connectDB = require("./config/dbConnect.js");
 const mongoose = require("mongoose");
 const PORT = process.env.PORT || 3550;
 
-console.log(process.env.GIDIZ);
-
 connectDB();
 
 app.use(logger);
@@ -26,6 +24,9 @@ app.use(cookieParser());
 app.use("/", express.static(path.join(__dirname, "public")));
 
 app.use("/", require("./routes/root"));
+app.use("/auth", require("./routes/authRoutes"));
+app.use("/users", require("./routes/userRoutes"));
+app.use("/notes", require("./routes/noteRoutes"));
 
 app.all("*", (req, res) => {
   res.status(404);
@@ -34,7 +35,7 @@ app.all("*", (req, res) => {
   } else if (req.accepts("json")) {
     res.json({ message: "404 not  found" });
   } else {
-    res.type("txt").send("404 not foun");
+    res.type("txt").send("404 not found");
   }
 });
 
